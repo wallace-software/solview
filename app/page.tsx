@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-//if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F
+
 export default function Home() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">

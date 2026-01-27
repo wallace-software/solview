@@ -29,6 +29,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* React Query Provider */}
         <Providers>{children}</Providers>
       </body>
     </html>
