@@ -1,50 +1,22 @@
 "use client";
 
-import { fetchAssetsByOwner } from "@/lib/api/helius.client";
-import { GetAssetsByOwnerParams } from "@/types/api/params";
-import { AssetsByOwnerProps, ViewState } from "@/types/component/props";
-import { useEffect, useState } from "react";
+import { useAssetsByOwnerQuery } from "@/lib/query/useAssetsByOwnerQuery";
+import { AssetsByOwnerProps } from "@/types/component/props";
 
 export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
-  // View state that details API status
-  const [view, setView] = useState<ViewState>({ status: "idle" });
+  const page = 1;
+  const limit = 100;
 
-  useEffect(() => {
-    if (!ownerAddress) return;
-
-    // Build request parameters
-    const params: GetAssetsByOwnerParams = {
-      ownerAddress,
-      page: 1,
-      limit: 100,
-    };
-
-    // Request data and handle view state
-    const loadAssets = async () => {
-      setView({ status: "loading" });
-
-      try {
-        const data = await fetchAssetsByOwner(params);
-        setView({ status: "success", data });
-      } catch (e: unknown) {
-        setView({
-          status: "error",
-          message: e instanceof Error ? e.message : "Unknown error",
-        });
-      }
-    };
-
-    loadAssets();
-  }, [ownerAddress]);
+  const { data, isLoading, isError, error } = useAssetsByOwnerQuery(
+    ownerAddress,
+    page,
+    limit,
+  );
 
   // Render state explicitly
-  if (view.status === "idle") return <div> Enter a wallet address</div>;
-  if (view.status === "loading") return <div>Loading assets...</div>;
-  if (view.status === "error") return <div> Error: {view.message}</div>;
+  if (!ownerAddress) return <div> Enter a wallet address</div>;
+  if (isLoading) return <div>Loading assets...</div>;
+  if (isError) return <div>Error: {(error as Error).message}</div>;
 
-  if (view.status === "success") {
-    return <pre className="text-sm">{JSON.stringify(view.data, null, 2)}</pre>;
-  }
-
-  return null;
+  return <pre className="text-sm">{JSON.stringify(data, null, 2)}</pre>;
 }

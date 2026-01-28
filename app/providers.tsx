@@ -7,7 +7,20 @@ import { JSX, PropsWithChildren, useState } from "react";
 // useState ensures the client is stable across re-renders.
 
 const Providers = ({ children }: PropsWithChildren): JSX.Element => {
-  const [queryClient] = useState(() => new QueryClient());
+  const [queryClient] = useState(
+    () =>
+      new QueryClient({
+        defaultOptions: {
+          queries: {
+            retry: 1,
+            staleTime: 30000,
+            refetchOnWindowFocus: false,
+            // refetchOnMount: true,
+            // refetchInterval: 120000,
+          },
+        },
+      }),
+  );
 
   return (
     <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
