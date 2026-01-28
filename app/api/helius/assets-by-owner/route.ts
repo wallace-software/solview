@@ -34,12 +34,12 @@ export async function GET(req: Request) {
     // Call helius client
     const result = await heliusRequest("getAssetsByOwner", params);
     return NextResponse.json(result);
-  } catch (err) {
+  } catch (e: unknown) {
     // Translate known errors into http responses
-    if (err instanceof HeliusError) {
+    if (e instanceof HeliusError) {
       return NextResponse.json(
-        { error: err.message },
-        { status: err.status ?? 500 },
+        { error: e.message },
+        { status: e.status ?? 500 },
       );
     }
 

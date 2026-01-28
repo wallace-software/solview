@@ -11,7 +11,7 @@ export const fetchAssetsByOwner = async (params: GetAssetsByOwnerParams) => {
   // Set up variables and build url
   const page = params.page ?? 1;
   const limit = params.limit ?? 100;
-  const url = `/api/helius/assets-by-owner?ownerAddress${params.ownerAddress}&page=${page}&limit=${limit}`;
+  const url = `/api/helius/assets-by-owner?ownerAddress=${params.ownerAddress}&page=${page}&limit=${limit}`;
 
   // Fetch the url and handle the response
   const response = await fetch(url);
