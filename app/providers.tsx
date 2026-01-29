@@ -15,8 +15,6 @@ const Providers = ({ children }: PropsWithChildren): JSX.Element => {
             retry: 1,
             staleTime: 30000,
             refetchOnWindowFocus: false,
-            // refetchOnMount: true,
-            // refetchInterval: 120000,
           },
         },
       }),
