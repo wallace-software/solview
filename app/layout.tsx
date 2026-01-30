@@ -3,6 +3,7 @@ import { Ribeye_Marrow, Roboto_Mono } from "next/font/google";
 import Providers from "./providers";
 
 import "./globals.css";
+import { Header } from "@/components/site/Header";
 
 const headerFont = Ribeye_Marrow({
   subsets: ["latin"],
@@ -33,7 +34,10 @@ export default function RootLayout({
         className={`${headerFont.variable} ${bodyFont.variable} antialiased`}
       >
         {/* React Query Provider */}
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );

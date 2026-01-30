@@ -1,7 +1,10 @@
 "use client";
 
 import { useAssetsByOwnerQuery } from "@/lib/query/useAssetsByOwnerQuery";
-import { AssetsByOwnerProps } from "@/types/component/props";
+
+type AssetsByOwnerProps = {
+  ownerAddress: string;
+};
 
 export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
   const page = 1;

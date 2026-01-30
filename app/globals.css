@@ -48,13 +48,12 @@
   --font-mono: var(--font-body);
   --font-display: var(--font-display);
   --color-theme-accent: var(--theme-accent-1);
-
 }
 
 :root {
+  --background: #0a0a0a; /* oklch(0.145 0 0); */
+  --foreground: #c2c2c2; /* oklch(0.985 0 0); */
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
@@ -85,13 +84,13 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   /* Custom */
-  --theme-accent-1: #FB6C48;  
-  --theme-accent-2: #6C48FB;
+  --theme-accent-1: #fb6c48;
+  --theme-accent-2: #6c48fb;
 }
 
 .dark {
-  --background: #0A0A0A; /* oklch(0.145 0 0); */
-  --foreground: #C2C2C2; /* oklch(0.985 0 0); */
+  --background: #0a0a0a; /* oklch(0.145 0 0); */
+  --foreground: #c2c2c2; /* oklch(0.985 0 0); */
   --card: oklch(0.205 0 0);
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.205 0 0);
@@ -122,8 +121,8 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
   /* Custom */
-  --theme-accent-1: #FB6C48;  
-  --theme-accent-2: #6C48FB;
+  --theme-accent-1: #fb6c48;
+  --theme-accent-2: #6c48fb;
 }
 
 @layer base {
@@ -135,5 +134,23 @@
   }
   h1 {
     @apply font-display text-theme-accent text-3xl sm:text-4xl leading-tight tracking-tight;
+  }
+}
+
+@layer components {
+  .logo {
+    @apply font-display tracking-tight;
+  }
+
+  .logo-sm {
+    @apply text-2xl;
+  }
+
+  .logo-lg {
+    @apply text-3xl sm:text-4xl;
+  }
+
+  .nav-selected {
+    @apply text-white! pointer-events-none;
   }
 }

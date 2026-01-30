@@ -1,4 +1,1 @@
-// Comonent props for AssetsByOwner
-export type AssetsByOwnerProps = {
-  ownerAddress: string;
-};
+// Component props

@@ -1,3 +1,5 @@
+"use client";
+
 export function Hero() {
   return (
     <div className="flex flex-col  items-center gap-3">
