@@ -4,8 +4,8 @@ import { useEffect, useState } from "react";
 
 import { Heading } from "@/components/site/Heading";
 import { AddressInput } from "@/components/wallet/AddressInput";
-import { AssetsByOwner } from "@/components/wallet/AssetsByOwner";
-import { useDebounceValue } from "@/hooks/useDebounce";
+
+// Homepage client to handle front end data management
 
 const DEFAULT_OWNER_ADDRESS = "if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F";
 const DEBOUNCE_MS = 500;

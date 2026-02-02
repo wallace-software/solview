@@ -1,5 +1,4 @@
 import { HomeClient } from "@/components/site/HomeClient";
-import { AssetsByOwner } from "@/components/wallet/AssetsByOwner";
 
 export default function Home() {
   return (

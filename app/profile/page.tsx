@@ -1,5 +1,3 @@
-"use client";
-
 import { Heading } from "@/components/site/Heading";
 
 export default function Profile() {

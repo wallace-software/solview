@@ -2,7 +2,8 @@
 
 import { Field, FieldDescription } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
-import { useState } from "react";
+
+// Wallet address input field
 
 type AddressInputProps = {
   value: string;

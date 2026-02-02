@@ -2,6 +2,9 @@ type HeadingProps = {
   header: string;
   subheader?: string;
 };
+
+// Header and subheader elements for pages
+
 export function Heading({ header, subheader = "" }: HeadingProps) {
   return (
     <div className="flex flex-col md:items-center gap-2">
