@@ -1,7 +1,7 @@
 "use client";
 
 import { useAssetsByOwnerQuery } from "@/lib/query/useAssetsByOwnerQuery";
-import { OWNER_ASSETS_LIMIT } from "@/lib/api/constants";
+import { DEFAULT_PAGE_SIZE } from "@/lib/api/constants";
 
 type AssetsByOwnerProps = {
   ownerAddress: string;
@@ -9,7 +9,7 @@ type AssetsByOwnerProps = {
 
 export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
   const page = 1;
-  const limit = OWNER_ASSETS_LIMIT;
+  const limit = DEFAULT_PAGE_SIZE;
 
   const { data, isLoading, isError, error } = useAssetsByOwnerQuery(
     ownerAddress,

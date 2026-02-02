@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import { fetchAssetsByOwner } from "@/lib/api/helius.client";
-import { OWNER_ASSETS_LIMIT } from "@/lib/api/constants";
+import { DEFAULT_PAGE_SIZE } from "@/lib/api/constants";
 
 // Query key that caches entry when there's a change in ownerAddress, page, or limt
 export const assetsByOwnerKey = (
@@ -13,7 +13,7 @@ export const assetsByOwnerKey = (
 export function useAssetsByOwnerQuery(
   ownerAddress: string,
   page = 1,
-  limit = OWNER_ASSETS_LIMIT,
+  limit = DEFAULT_PAGE_SIZE,
 ) {
   return useQuery({
     queryKey: assetsByOwnerKey(ownerAddress, page, limit),
