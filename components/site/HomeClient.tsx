@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import { Heading } from "@/components/site/Heading";
 import { AddressInput } from "@/components/wallet/AddressInput";
+import { AssetsByOwner } from "@/components/wallet/AssetsByOwner";
 
 // Homepage client to handle front end data management
 
@@ -51,13 +52,13 @@ export function HomeClient() {
         header="Enter a wallet below"
         subheader="Paste sol address below to view the stored art"
       />
-
       <AddressInput
         value={draftAddress}
         onChange={handleChange}
         onSubmit={commitNow}
         // helperText={activeAddress}
       />
+      <AssetsByOwner ownerAddress={activeAddress} />
     </div>
   );
 }

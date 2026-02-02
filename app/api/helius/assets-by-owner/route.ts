@@ -2,6 +2,7 @@ import { heliusRequest } from "@/lib/api/helius.server";
 import { GetAssetsByOwnerParams } from "@/types/api/params";
 import { HeliusError } from "@/types/api/status";
 import { NextResponse } from "next/server";
+import { OWNER_ASSETS_LIMIT } from "@/lib/api/constants";
 
 // This route exposes a safe HTTP endpoint for the frontend to request Helius data.
 // It handles input validation and error mapping so the client never talks to Helius directly
@@ -13,7 +14,7 @@ export async function GET(req: Request) {
 
   const ownerAddress = searchParams.get("ownerAddress");
   const page = Number(searchParams.get("page") ?? 1);
-  const limit = Number(searchParams.get("limit") ?? 100);
+  const limit = Number(searchParams.get("limit") ?? OWNER_ASSETS_LIMIT);
 
   // Validate parameters
   if (!ownerAddress) {
