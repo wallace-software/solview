@@ -133,7 +133,7 @@ function NavigationMenuLink({
     <NavigationMenuPrimitive.Link
       data-slot="navigation-menu-link"
       className={cn(
-        "group inline-flex h-9 w-max items-center justify-center rounded-md px-2 md:px-4 py-2 text-sm font-medium transition-colors duration-200 text-foreground hover:text-white data-[state=open]:text-white focus:text-white disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-0",
+        "group inline-flex h-9 w-max items-center justify-center rounded-md px-2 md:px-4 py-2 text-sm font-medium transition-colors duration-200 text-foreground/40 hover:text-white data-[state=open]:text-white focus:text-white disabled:pointer-events-none disabled:opacity-50 outline-none focus-visible:ring-0",
         className,
       )}
       {...props}
@@ -149,7 +149,7 @@ function NavigationMenuIndicator({
     <NavigationMenuPrimitive.Indicator
       data-slot="navigation-menu-indicator"
       className={cn(
-        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-[1] flex h-1.5 items-end justify-center overflow-hidden",
+        "data-[state=visible]:animate-in data-[state=hidden]:animate-out data-[state=hidden]:fade-out data-[state=visible]:fade-in top-full z-1 flex h-1.5 items-end justify-center overflow-hidden",
         className,
       )}
       {...props}
