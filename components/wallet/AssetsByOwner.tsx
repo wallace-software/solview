@@ -3,8 +3,9 @@
 import { useAssetsByOwnerQuery } from "@/lib/query/useAssetsByOwnerQuery";
 import { DEFAULT_PAGE_SIZE } from "@/lib/api/constants";
 import { HeliusAsset } from "@/types/api/assets";
-import { ReactNode } from "react";
-import Image from "next/image";
+import { Grid } from "@/components/nft/Grid";
+import { NftCard } from "@/components/nft/NftCard";
+import { LoadCard } from "@/components/nft/LoadCard";
 
 type AssetsByOwnerProps = {
   ownerAddress: string;
@@ -61,7 +62,7 @@ export function ArtGrid({
   return (
     <Grid>
       {items.map((item, i) => (
-        <GridCard
+        <NftCard
           key={i}
           src={item?.content?.links?.image}
           name={item?.content?.metadata?.name}
@@ -70,79 +71,4 @@ export function ArtGrid({
       ))}
     </Grid>
   );
-}
-
-type GridCardProps = {
-  src: string | undefined;
-  name: string | undefined;
-  description: string | undefined;
-};
-function GridCard({ src, name, description }: GridCardProps) {
-  const placeholderSrc = "/images/assets-by-owner/fetching-image.svg";
-  return (
-    <CardParent>
-      {/* <Image
-        src={src ?? placeholderSrc}
-        width={200}
-        height={200}
-        alt="NFT artwork"
-        placeholder="blur"
-        blurDataURL={placeholderSrc}
-        className="animate-pulse"
-      /> */}
-      <img
-        src={src ?? placeholderSrc}
-        width={200}
-        height={200}
-        alt="NFT artwork"
-        className="object-cover rounded-md"
-        onError={(e) => {
-          e.currentTarget.src = placeholderSrc;
-        }}
-      />
-      <h3 className="truncate">{name}</h3>
-      <p className="text-sm line-clamp-2">{description}</p>
-    </CardParent>
-  );
-}
-
-function LoadCard() {
-  return (
-    <CardParent>
-      <Image
-        src="/images/assets-by-owner/loading-image.svg"
-        width={200}
-        height={200}
-        alt={"Image loading container"}
-        className="animate-pulse"
-      />
-      <Image
-        src="/images/assets-by-owner/loading-text-1.svg"
-        width={125}
-        height={23}
-        alt={"Title loading container"}
-        className="animate-pulse"
-      />
-      <Image
-        src="/images/assets-by-owner/loading-text-2.svg"
-        width={175}
-        height={24}
-        alt={"Desciption loading container"}
-        className="animate-pulse"
-      />
-    </CardParent>
-  );
-}
-
-function Grid({ children }: { children: ReactNode }) {
-  return (
-    <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10">
-      {/* <div className="flex flex-wrap gap-6 sm:gap-10 items-center justify-center"> */}
-      {children}
-    </div>
-  );
-}
-
-function CardParent({ children }: { children: ReactNode }) {
-  return <div className="flex flex-col gap-2 w-50">{children}</div>;
 }
