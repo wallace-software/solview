@@ -15,7 +15,7 @@ export function Header() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full flex items-center justify-center">
+    <header className="sticky top-0 z-50 w-full flex items-center justify-center bg-background">
       <div className="container flex justify-between h-auto max-w-screen-2xl px-8 md:px-12 py-6 md:py-8">
         <Logo size="sm" href="/" />
 

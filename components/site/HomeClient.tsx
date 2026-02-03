@@ -60,7 +60,9 @@ export function HomeClient() {
         onChange={handleChange}
         onSubmit={commitNow}
       />
-      <AssetsByOwner ownerAddress={activeAddress} />
+      <div className="flex justify-center">
+        <AssetsByOwner ownerAddress={activeAddress} />
+      </div>
     </div>
   );
 }
