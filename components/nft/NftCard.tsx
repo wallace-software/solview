@@ -9,7 +9,7 @@ type NftCardProps = {
 export function NftCard({ src, name, description }: NftCardProps) {
   const placeholderSrc = "/images/assets-by-owner/fetching-image.svg";
   return (
-    <Card>
+    <Card className="group">
       {/* <Image
         src={src ?? placeholderSrc}
         width={200}
@@ -24,7 +24,7 @@ export function NftCard({ src, name, description }: NftCardProps) {
         <img
           src={src ?? placeholderSrc}
           alt="NFT artwork"
-          className="absolute inset-0 w-full h-full object-cover"
+          className="absolute inset-0 w-full h-full object-cover saturate-40 transition-all duration-300 group-hover:saturate-100"
           onError={(e) => {
             e.currentTarget.src = placeholderSrc;
           }}
