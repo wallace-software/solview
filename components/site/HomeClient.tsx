@@ -8,7 +8,7 @@ import { AssetsByOwner } from "@/components/wallet/AssetsByOwner";
 
 // Homepage client to handle front end data management
 
-const DEFAULT_OWNER_ADDRESS = "if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F";
+const DEFAULT_OWNER_ADDRESS = "APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K"; //"if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F";
 const DEBOUNCE_MS = 500;
 
 export function HomeClient() {

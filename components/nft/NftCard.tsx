@@ -18,16 +18,17 @@ export function NftCard({ src, name, description }: NftCardProps) {
         blurDataURL={placeholderSrc}
         className="animate-pulse"
       /> */}
-      <img
-        src={src ?? placeholderSrc}
-        width={200}
-        height={200}
-        alt="NFT artwork"
-        className="object-cover rounded-md"
-        onError={(e) => {
-          e.currentTarget.src = placeholderSrc;
-        }}
-      />
+      <div className="relative w-full aspect-square rounded-md overflow-hidden">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src ?? placeholderSrc}
+          alt="NFT artwork"
+          className="absolute inset-0 w-full h-full object-cover"
+          onError={(e) => {
+            e.currentTarget.src = placeholderSrc;
+          }}
+        />
+      </div>
       <h3 className="truncate">{name}</h3>
       <p className="text-sm line-clamp-2">{description}</p>
     </Card>
