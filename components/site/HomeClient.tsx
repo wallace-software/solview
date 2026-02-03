@@ -8,7 +8,9 @@ import { AssetsByOwner } from "@/components/wallet/AssetsByOwner";
 
 // Homepage client to handle front end data management
 
-const DEFAULT_OWNER_ADDRESS = "APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K"; //"if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F";
+//if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F
+//61ngvyn6YACpbMhtnEYrV6fgMFkBVTX21CdPQJ2X45Lp
+const DEFAULT_OWNER_ADDRESS = "APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K";
 const DEBOUNCE_MS = 500;
 
 export function HomeClient() {
@@ -56,7 +58,6 @@ export function HomeClient() {
         value={draftAddress}
         onChange={handleChange}
         onSubmit={commitNow}
-        // helperText={activeAddress}
       />
       <AssetsByOwner ownerAddress={activeAddress} />
     </div>

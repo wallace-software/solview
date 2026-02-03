@@ -5,6 +5,7 @@ type NftCardProps = {
   name: string | undefined;
   description: string | undefined;
 };
+
 export function NftCard({ src, name, description }: NftCardProps) {
   const placeholderSrc = "/images/assets-by-owner/fetching-image.svg";
   return (
@@ -29,7 +30,7 @@ export function NftCard({ src, name, description }: NftCardProps) {
           }}
         />
       </div>
-      <h3 className="truncate">{name}</h3>
+      <h3 className="truncate pb-1">{name}</h3>
       <p className="text-sm line-clamp-2">{description}</p>
     </Card>
   );

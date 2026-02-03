@@ -16,7 +16,7 @@ export function LoadCard() {
         width={125}
         height={23}
         alt={"Title loading container"}
-        className="animate-pulse"
+        className="animate-pulse pt-1 pb-3"
       />
       <Image
         src="/images/assets-by-owner/loading-text-2.svg"
