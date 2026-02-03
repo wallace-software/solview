@@ -50,7 +50,7 @@ export function HomeClient() {
     <div className="flex flex-col md:items-center gap-12">
       <Heading
         header="Enter a wallet below"
-        subheader="Paste sol address below to view the stored art"
+        subheader="Paste a sol address below to view the stored art"
       />
       <AddressInput
         value={draftAddress}

@@ -30,7 +30,7 @@ export function AddressInput({
         onChange={(e) => onChange(e.target.value)}
         onKeyDown={(e) => e.key === "Enter" && onSubmit()}
         disabled={disabled}
-        className="bg-background!text-xs! md:text-sm!"
+        className="bg-background! text-xs! md:text-sm!"
       />
       <FieldDescription className="text-center">{helperText}</FieldDescription>
     </Field>

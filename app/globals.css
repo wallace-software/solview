@@ -84,8 +84,8 @@
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
   /* Custom */
-  --theme-accent-1: #fb6c48;
-  --theme-accent-2: #6c48fb;
+  --theme-accent-2: #fb6c48;
+  --theme-accent-1: #6c48fb;
 }
 
 .dark {
@@ -121,8 +121,8 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
   /* Custom */
-  --theme-accent-1: #fb6c48;
-  --theme-accent-2: #6c48fb;
+  --theme-accent-2: #fb6c48;
+  --theme-accent-1: #6c48fb;
 }
 
 @layer base {
@@ -135,8 +135,11 @@
   h1 {
     @apply font-display text-theme-accent text-3xl sm:text-4xl leading-tight tracking-tight;
   }
+  h3 {
+    @apply font-display text-foreground text-2xl leading-tight tracking-tight;
+  }
   p {
-    @apply text-sm md:text-base;
+    @apply text-sm md:text-base text-foreground;
   }
 }
 
