@@ -42,9 +42,9 @@ export function ArtGrid({
   items,
   isLoading,
   isFetching,
-  isError,
-  error,
-  hasData,
+  // isError,
+  // error,
+  // hasData,
 }: ArtGridProps) {
   // 1) first load
   if (isLoading || isFetching) {
