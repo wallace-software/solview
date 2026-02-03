@@ -10,7 +10,8 @@ import { AssetsByOwner } from "@/components/wallet/AssetsByOwner";
 
 //if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F
 //61ngvyn6YACpbMhtnEYrV6fgMFkBVTX21CdPQJ2X45Lp
-const DEFAULT_OWNER_ADDRESS = "APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K";
+//APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K
+const DEFAULT_OWNER_ADDRESS = "ExtjYxhKfPyUh8QyPseKgdSKoRLVikqLyTobke78UXav";
 const DEBOUNCE_MS = 500;
 
 export function HomeClient() {

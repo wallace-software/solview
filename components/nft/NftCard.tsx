@@ -31,7 +31,7 @@ export function NftCard({ src, name, description }: NftCardProps) {
         />
       </div>
       <h3 className="truncate pb-1">{name}</h3>
-      <p className="text-sm line-clamp-2">{description}</p>
+      <p className="text-xs line-clamp-2">{description}</p>
     </Card>
   );
 }
