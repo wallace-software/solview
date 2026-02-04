@@ -48,6 +48,7 @@
   --font-mono: var(--font-body);
   --font-display: var(--font-display);
   --color-theme-accent: var(--theme-accent-1);
+  --color-theme-error: var(--theme-error);
 }
 
 :root {
@@ -86,6 +87,7 @@
   /* Custom */
   --theme-accent-2: #fb6c48;
   --theme-accent-1: #6c48fb;
+  --theme-error: #fb487e;
 }
 
 .dark {
@@ -123,6 +125,7 @@
   /* Custom */
   --theme-accent-2: #fb6c48;
   --theme-accent-1: #6c48fb;
+  --error: #fb487e;
 }
 
 @layer base {

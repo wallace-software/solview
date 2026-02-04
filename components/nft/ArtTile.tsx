@@ -1,6 +1,7 @@
 "use client";
 import { Card } from "@/components/nft/Card";
-import { LoadCard } from "./LoadCard";
+import { LoadCard } from "@/components/nft/LoadCard";
+import { ErrorCard } from "@/components/nft/ErrorCard";
 import { cn } from "@/lib/utils";
 
 type ArtTileProps =
@@ -25,15 +26,10 @@ export function ArtTile(props: ArtTileProps) {
   // Error
   if (props.state === "error") {
     return (
-      <Card>
-        <div className="w-full aspect-square rounded-md bg-red-500/10 grid place-items-center">
-          <div className="text-red-300 text-sm">Error</div>
-        </div>
-        <h3 className="truncate pb-1">{props.title ?? "Error"}</h3>
-        <p className="text-xs line-clamp-2 opacity-80">
-          {props.description ?? "Something went wrong."}
-        </p>
-      </Card>
+      <ErrorCard
+        title={props?.title ?? "Error"}
+        description={props?.description ?? "Something went wrong."}
+      />
     );
   }
 
