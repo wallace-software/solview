@@ -1,3 +1,5 @@
+"use client";
+
 import { useEffect, useState } from "react";
 
 // Returns size of grid columns based on = rows (params) x columns (screen width)
@@ -26,5 +28,5 @@ export const useResponsiveGridSize = ({ rows = 2 }) => {
     return () => window.removeEventListener("resize", onResize);
   }, []);
 
-  return { cols, gridSize: cols * rows };
+  return { cols, gridSize: cols * rows, isHydrated: cols !== null };
 };

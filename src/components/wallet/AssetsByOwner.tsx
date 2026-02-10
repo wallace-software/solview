@@ -27,16 +27,18 @@ export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
   }, [hasNextPage, isFetchingNextPage, fetchNextPage]);
 
   return (
-    <ArtGrid
-      items={items}
-      isLoading={query.isLoading}
-      isFetchingNextPage={query.isFetchingNextPage}
-      hasNextPage={query.hasNextPage}
-      isError={query.isError}
-      error={query.error}
-      hasData={hasData}
-      gridSize={gridSize}
-      onLoadMore={loadMore}
-    />
+    <div suppressHydrationWarning>
+      <ArtGrid
+        items={items}
+        isLoading={query.isLoading}
+        isFetchingNextPage={query.isFetchingNextPage}
+        hasNextPage={query.hasNextPage}
+        isError={query.isError}
+        error={query.error}
+        hasData={hasData}
+        gridSize={gridSize}
+        onLoadMore={loadMore}
+      />
+    </div>
   );
 }

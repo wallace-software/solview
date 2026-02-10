@@ -4,7 +4,8 @@ import { HeliusAsset } from "@/src/types/api/assets";
 import { GridWrapper } from "@/src/components/nft/GridWrapper";
 import { ArtTile } from "@/src/components/nft/ArtTile";
 import { LoadCard } from "@/src/components/nft/LoadCard";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
+import { useInfiniteScroll } from "@/src/hooks/useInfiniteScroll";
 
 type ArtGridProps = {
   items: HeliusAsset[] | undefined;
@@ -26,37 +27,23 @@ export function ArtGrid({
   isError,
   error,
   hasData,
-  gridSize,
   onLoadMore,
 }: ArtGridProps) {
   const showInitialSkeleton = isLoading && !hasData;
   const sentinelRef = useRef<HTMLDivElement | null>(null);
 
-  //
-  useEffect(() => {
-    if (!sentinelRef.current) return;
-    if (!hasNextPage) return;
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
-          onLoadMore();
-        }
-      },
-      {
-        rootMargin: "200px", // prefetch before visible
-      },
-    );
-
-    observer.observe(sentinelRef.current);
-    return () => observer.disconnect();
-  }, [hasNextPage, onLoadMore, isFetchingNextPage]);
+  useInfiniteScroll({
+    targetRef: sentinelRef,
+    enabled: hasNextPage,
+    onLoadMore,
+    rootMargin: "200px",
+  });
 
   // 1) First load: skeleton grid
   if (showInitialSkeleton) {
     return (
       <GridWrapper>
-        {Array.from({ length: gridSize }).map((_, i) => (
+        {Array.from({ length: 12 }).map((_, i) => (
           <ArtTile key={`skeleton-${i}`} state="loading" />
         ))}
       </GridWrapper>
