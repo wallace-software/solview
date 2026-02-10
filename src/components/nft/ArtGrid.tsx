@@ -1,8 +1,10 @@
+"use client";
+
 import { HeliusAsset } from "@/src/types/api/assets";
 import { GridWrapper } from "@/src/components/nft/GridWrapper";
 import { ArtTile } from "@/src/components/nft/ArtTile";
 import { LoadCard } from "@/src/components/nft/LoadCard";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 type ArtGridProps = {
   items: HeliusAsset[] | undefined;
@@ -37,7 +39,7 @@ export function ArtGrid({
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
           onLoadMore();
         }
       },
@@ -48,7 +50,7 @@ export function ArtGrid({
 
     observer.observe(sentinelRef.current);
     return () => observer.disconnect();
-  }, [hasNextPage, onLoadMore]);
+  }, [hasNextPage, onLoadMore, isFetchingNextPage]);
 
   // 1) First load: skeleton grid
   if (showInitialSkeleton) {
