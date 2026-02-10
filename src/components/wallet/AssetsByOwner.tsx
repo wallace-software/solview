@@ -1,18 +1,17 @@
 "use client";
 
-import { useAssetsByOwnerQuery } from "@/src/lib/query/useAssetsByOwnerQuery";
 import { DEFAULT_PAGE_SIZE } from "@/src/lib/api/constants";
 import { ArtGrid } from "@/src/components/nft/ArtGrid";
+import { useAssetsByOwnerInfiniteQuery } from "@/src/lib/query/useAssetsByOwnerQuery";
 
 type AssetsByOwnerProps = {
   ownerAddress: string;
 };
 
 export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
-  const page = 1;
   const limit = DEFAULT_PAGE_SIZE;
 
-  const query = useAssetsByOwnerQuery(ownerAddress, page, limit);
+  const query = useAssetsByOwnerInfiniteQuery(ownerAddress, limit);
 
   return (
     <ArtGrid
