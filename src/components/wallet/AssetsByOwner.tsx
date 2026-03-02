@@ -11,7 +11,6 @@ type AssetsByOwnerProps = {
 export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
   const QUERY_LIMIT = 12;
 
-  // Use dynamic query limit based on grid size
   const query = useAssetsByOwnerInfiniteQuery(ownerAddress, QUERY_LIMIT);
   const { hasNextPage, isFetchingNextPage, fetchNextPage } = query;
 

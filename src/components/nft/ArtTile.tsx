@@ -21,6 +21,8 @@ const FALLBACK_SRC = "/images/assets-by-owner/fetching-image.svg";
 
 export function ArtTile(props: ArtTileProps) {
   const [hasError, setHasError] = useState(false);
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
   //Loading
   if (props.state === "loading") {
     return <LoadCard />;
@@ -40,9 +42,10 @@ export function ArtTile(props: ArtTileProps) {
   const { src, name, description, isUpdating } = props;
 
   // Use fallback if error occurred
-  const imageSrc = hasError
-    ? FALLBACK_SRC
-    : getProxiedImageUrl(src, FALLBACK_SRC);
+  const imageSrc =
+    hasError || isImageLoading
+      ? FALLBACK_SRC
+      : getProxiedImageUrl(src, FALLBACK_SRC);
 
   return (
     <Card className={cn("group", isUpdating && "opacity-90")}>
@@ -52,10 +55,12 @@ export function ArtTile(props: ArtTileProps) {
           src={imageSrc}
           alt={name ? `${name} artwork` : "NFT Artwork"}
           className="absolute inset-0 w-full h-full object-cover saturate-40 transition-all duration-300 group-hover:saturate-100"
+          onLoad={() => setIsImageLoading(false)}
           onError={() => {
             if (!hasError) {
               console.warn(`Failed to load image: ${src}`);
               setHasError(true);
+              setIsImageLoading(false);
             }
           }}
         />
