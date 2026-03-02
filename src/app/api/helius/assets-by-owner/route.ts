@@ -4,11 +4,11 @@ import { HeliusError } from "@/src/types/api/status";
 import { NextResponse } from "next/server";
 import { DEFAULT_PAGE_SIZE } from "@/src/lib/api/constants";
 
+// Frontend -> Service Layer/Business Logic -> Next Route  (here) -> ???
+
 // This route exposes a safe HTTP endpoint for the frontend to request Helius data.
 // It handles input validation and error mapping so the client never talks to Helius directly
 // or deals with RPC-level concerns
-
-// Frontend -> API Route -> Heliuse Server Module -> Helius API
 
 export async function GET(req: Request) {
   // Extract query params from request

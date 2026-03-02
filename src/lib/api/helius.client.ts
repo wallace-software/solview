@@ -3,6 +3,8 @@ import { GetAssetsByOwnerParams } from "@/src/types/api/params";
 // Client helper that calls /api/helius/assets-by-owner
 // Returns JSON on success, throws a clean Error on failure
 
+// Frontend -> Service Layer/Business Logic (here) -> Next Route -> ???
+
 export const fetchAssetsByOwner = async (params: GetAssetsByOwnerParams) => {
   if (!params.ownerAddress) {
     throw new Error("Missing ownerAddress");

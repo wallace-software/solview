@@ -15,7 +15,6 @@ type ArtGridProps = {
   isError: boolean;
   error: unknown;
   hasData: boolean;
-  gridSize: number;
   onLoadMore: () => void;
 };
 

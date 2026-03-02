@@ -2,7 +2,6 @@
 
 import { ArtGrid } from "@/src/components/nft/ArtGrid";
 import { useAssetsByOwnerInfiniteQuery } from "@/src/lib/query/useAssetsByOwnerQuery";
-import { useResponsiveGridSize } from "@/src/hooks/useResponsiveGridSize";
 import { useCallback } from "react";
 
 type AssetsByOwnerProps = {
@@ -10,9 +9,10 @@ type AssetsByOwnerProps = {
 };
 
 export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
-  const { gridSize } = useResponsiveGridSize({ rows: 3 });
+  const QUERY_LIMIT = 12;
+
   // Use dynamic query limit based on grid size
-  const query = useAssetsByOwnerInfiniteQuery(ownerAddress, gridSize);
+  const query = useAssetsByOwnerInfiniteQuery(ownerAddress, QUERY_LIMIT);
   const { hasNextPage, isFetchingNextPage, fetchNextPage } = query;
 
   // Infinite query returns pages that need to be flattened
@@ -36,7 +36,6 @@ export function AssetsByOwner({ ownerAddress }: AssetsByOwnerProps) {
         isError={query.isError}
         error={query.error}
         hasData={hasData}
-        gridSize={gridSize}
         onLoadMore={loadMore}
       />
     </div>

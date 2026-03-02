@@ -4,6 +4,8 @@ import {
   GetAssetsByOwnerParams,
 } from "@/src/types/api/params";
 
+// Frontend -> API Route -> Heliuse Server Module (here) -> Helius API
+
 // This module is the lowest-level interface to Helius.
 // It hides JSON-RPC and HTTP details and guarantees that callers get valid data or a structred error they can safely handle.
 

@@ -3,6 +3,8 @@ import { Card } from "@/src/components/nft/Card";
 import { LoadCard } from "@/src/components/nft/LoadCard";
 import { ErrorCard } from "@/src/components/nft/ErrorCard";
 import { cn } from "@/src/lib/utils";
+import { useState } from "react";
+import { getProxiedImageUrl } from "@/src/lib/helpers/proxy";
 
 type ArtTileProps =
   | { state: "loading" }
@@ -18,6 +20,7 @@ type ArtTileProps =
 const FALLBACK_SRC = "/images/assets-by-owner/fetching-image.svg";
 
 export function ArtTile(props: ArtTileProps) {
+  const [hasError, setHasError] = useState(false);
   //Loading
   if (props.state === "loading") {
     return <LoadCard />;
@@ -35,16 +38,25 @@ export function ArtTile(props: ArtTileProps) {
 
   // Success
   const { src, name, description, isUpdating } = props;
+
+  // Use fallback if error occurred
+  const imageSrc = hasError
+    ? FALLBACK_SRC
+    : getProxiedImageUrl(src, FALLBACK_SRC);
+
   return (
     <Card className={cn("group", isUpdating && "opacity-90")}>
       <div className="relative w-full aspect-square rounded-md overflow-hidden">
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
-          src={src ?? FALLBACK_SRC}
+          src={imageSrc}
           alt={name ? `${name} artwork` : "NFT Artwork"}
           className="absolute inset-0 w-full h-full object-cover saturate-40 transition-all duration-300 group-hover:saturate-100"
-          onError={(e) => {
-            e.currentTarget.src = FALLBACK_SRC;
+          onError={() => {
+            if (!hasError) {
+              console.warn(`Failed to load image: ${src}`);
+              setHasError(true);
+            }
           }}
         />
       </div>
@@ -53,9 +65,3 @@ export function ArtTile(props: ArtTileProps) {
     </Card>
   );
 }
-
-// <Card className="animate-pulse">
-//   <div className="w-full aspect-square rounded-md bg-white/5" />
-//   <div className="h-5 w-2/3 rounded bg-white/5" />
-//   <div className="h-4 w-full rounded bg-white/5" />
-// </Card>;

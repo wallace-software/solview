@@ -3,6 +3,8 @@ import { fetchAssetsByOwner } from "@/src/lib/api/helius.client";
 import { DEFAULT_PAGE_SIZE } from "@/src/lib/api/constants";
 import { AssetsByOwnerResponse } from "@/src/types/api/assets";
 
+// Frontend (here) -> Service Layer/Business Logic -> Next Route -> ???
+
 // Query key that caches entry when there's a change in ownerAddress, page, or limt
 export const assetsByOwnerKey = (ownerAddress: string, limit: number) =>
   ["helius", "assets-by-owner", ownerAddress, limit] as const;
