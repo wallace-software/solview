@@ -3,20 +3,18 @@
 import { useEffect, useState } from "react";
 import { AddressInput } from "@/src/components/wallet/AddressInput";
 import { AssetsByOwner } from "@/src/components/wallet/AssetsByOwner";
+import { useWalletStore } from "@/src/lib/store/wallet.store";
 
 // Homepage client to handle front end data management
 
 const DEBOUNCE_MS = 500;
-const DEFAULT_OWNER_ADDRESS = "ExtjYxhKfPyUh8QyPseKgdSKoRLVikqLyTobke78UXav";
-//if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F
-//61ngvyn6YACpbMhtnEYrV6fgMFkBVTX21CdPQJ2X45Lp
-//APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K
 
 export function HomeClient() {
   // What the API queries (starts with demo wallet)
-  const [activeAddress, setActiveAddress] = useState<string>(
-    DEFAULT_OWNER_ADDRESS,
-  );
+  const activeWallet = useWalletStore((state) => state.activeWallet);
+  const setActiveWallet = useWalletStore((state) => state.setActiveWallet);
+  const pushRecentAddress = useWalletStore((state) => state.pushRecentAddress);
+
   //What the input shows (starts empty)
   const [draftAddress, setDraftAddress] = useState("");
   // Becomes true on first user input
@@ -29,10 +27,13 @@ export function HomeClient() {
     const trimmed = draftAddress.trim();
     if (!trimmed) return;
 
-    const t = setTimeout(() => setActiveAddress(trimmed), DEBOUNCE_MS);
+    const t = setTimeout(() => {
+      setActiveWallet(trimmed);
+      pushRecentAddress(trimmed);
+    }, DEBOUNCE_MS);
 
     return () => clearTimeout(t);
-  }, [draftAddress, hasUserEdited]);
+  }, [draftAddress, hasUserEdited, setActiveWallet, pushRecentAddress]);
 
   // hands draftAddress change
   const handleChange = (next: string) => {
@@ -46,7 +47,8 @@ export function HomeClient() {
     if (!trimmed) return;
 
     setHasUserEdited(true);
-    setActiveAddress(trimmed);
+    setActiveWallet(trimmed);
+    pushRecentAddress(trimmed);
   };
 
   return (
@@ -57,7 +59,7 @@ export function HomeClient() {
         onSubmit={commitNow}
       />
       <div className="flex justify-center">
-        <AssetsByOwner ownerAddress={activeAddress} />
+        <AssetsByOwner ownerAddress={activeWallet} />
       </div>
     </div>
   );

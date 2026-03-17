@@ -53,10 +53,10 @@ export async function GET(request: NextRequest) {
       return new NextResponse("Image too large", { status: 413 });
     }
 
-    // Read imag into memory as binary data
+    // Read image into memory as binary data
     const imageBuffer = await response.arrayBuffer();
 
-    // Retyrb unage ti ckuebt with caching
+    // Return image with caching
     return new NextResponse(imageBuffer, {
       headers: {
         "Content-Type": contentType,

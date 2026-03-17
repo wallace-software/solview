@@ -1,1 +1,7 @@
 export const DEFAULT_PAGE_SIZE = 6;
+
+export const DEFAULT_OWNER_ADDRESS =
+  "ExtjYxhKfPyUh8QyPseKgdSKoRLVikqLyTobke78UXav";
+//if6RZbX2pJEsxaBDH1aFWvAaWUb3dLcouZ2onNXkj1F
+//61ngvyn6YACpbMhtnEYrV6fgMFkBVTX21CdPQJ2X45Lp
+//APKq87wYJxDEJPmWujDGPF779QwV9N8wkvJxAc9QiT9K
